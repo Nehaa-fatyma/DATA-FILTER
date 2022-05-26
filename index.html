@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <style>
+        ul li {
+            display: inline-block;
+            padding: 5px;
+            border: 2px solid teal;
+            cursor: pointer;
+
+        }
+
+        .active {
+            background-color: red;
+        }
+
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div>
+            <ul>
+                <li class="list active" data-filter="all">ALL</li>
+                <li class="list" data-filter="fruits">FRUITS</li>
+                <li class="list" data-filter="vegetables">VEGETABLES</li>
+            </ul>
+        </div>
+        <div class="product">
+            <div class="itemBox fruits">
+                <img src="https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2018/08/bananas-1354785_1920-1200x800.jpg"
+                    alt="">
+            </div>
+
+            <div class="itemBox fruits">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHOMl_94cFvN1JX81i_R8Q1o9AmNjkXxElBg&usqp=CAU"
+                    alt="">
+            </div>
+
+            <div class="itemmBox fruits">
+                <img src="https://blog-images.pharmeasy.in/2020/08/28152823/shutterstock_583745164-1.jpg" alt="">
+            </div>
+
+            <div class="itemBox vegetables">
+                <img src="https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798874x3.jpg" alt="">
+            </div>
+
+            <div class="itemBox vegetables">
+                <img src="https://images.indianexpress.com/2022/04/lemons.jpg" alt="">
+            </div>
+
+            <div class="itemBox vegetables">
+                <img src="https://images.prabhasakshi.com/2022/4/onion-during-summers_large_1801_84.jpeg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $('.list').click(function (){
+
+            const value = $(this).attr('data-filter');
+            // console.log(value)
+            if (value == 'all'){
+                $('.itemBox').show(1000);
+            }
+            else {
+                $('.itemBox').filter('.' + value).show('1000');
+                $('.itemBox').not('.' + value).hide('1000');
+            }
+
+        })
+
+        $('.list').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        })
+
+
+    </script>
+</body>
+
+</html>
